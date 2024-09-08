@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 const VerifyEmail = () => {
     const [code, setCode] = useState("");
     const [error, setError] = useState<string | undefined>(undefined);
-    const [loading, setLoading] = useState(false); // Add loading state
+    const [loading, setLoading] = useState(false); 
     const router = useRouter();
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +27,7 @@ const VerifyEmail = () => {
             return;
         }
 
-        setLoading(true); // Set loading to true when starting request
+        setLoading(true); 
 
         try {
             const response = await fetch('/api/verify', {

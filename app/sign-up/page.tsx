@@ -8,11 +8,14 @@ import Text from '@/components/text';
 import { TEST_REGISTER_MUTATION } from '@/graphql/mutations';
 import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
 import { validateEmail } from '@/utils/email-validation';
 import { validatePassword } from '@/utils/password-validation';
+import { setUserData } from '@/redux/slices/userSlice';
 
 
 const SignUp = () => {
+    const dispatch = useDispatch()
     const [formState, setFormState] = useState({
         firstName: "",
         lastName: "",
@@ -79,6 +82,7 @@ const SignUp = () => {
                     password: formState.password,
                 },
             });*/
+            dispatch(setUserData(formState));
             router.push('/verify-email');
         } catch (err) {
             console.error(err);
